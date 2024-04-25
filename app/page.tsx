@@ -1,10 +1,16 @@
+"use client"
 import Header from "@/components/header";
+import SidePanel from "@/components/sidepanel";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [sidePanelOpen, setSidePanelOpen] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header sidePanelOpen={sidePanelOpen} setSidePanelOpen={setSidePanelOpen} />
+      <SidePanel sidePanelOpen={sidePanelOpen} />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
       </main>
     </>
