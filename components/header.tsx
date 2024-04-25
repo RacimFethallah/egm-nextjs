@@ -6,6 +6,11 @@ import { IoSearch } from 'react-icons/io5';
 import Image from 'next/image'
 import logo from '../assets/logo.png'
 import SidePanel from './sidepanel';
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
 
 
 export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelOpen: boolean, setSidePanelOpen: Function }) {
@@ -45,7 +50,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
             </div>
 
             <div className={`shadow-md flex flex-col sm:items-center justify-between lg:flex-row lg:py-0 py-5 `}>
-                <div className={`sm:flex lg:flex-row flex-col items-center pl-5 py-5 gap-5 hidden`}>
+                <div className={`sm:flex lg:flex-row flex-col items-center pl-5 py-3 gap-5 hidden`}>
                     <Image
                         src={logo.src}
                         width={isSticky ? 70 : 100}
@@ -78,7 +83,28 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                         <IoSearch size={24} />
                     </div>
                     <div className=" hover:cursor-pointer sm:hidden">
-                        <CiMenuKebab size={24} />
+                        <Popover>
+                            <PopoverTrigger>
+                                <CiMenuKebab size={24} />
+                            </PopoverTrigger>
+                            <PopoverContent className="mx-2 w-fit">
+                                <div className='space-y-5 text-sm'>
+                                    <a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
+                                        href="tel:+213799039212"><CiPhone size={18} />+213 799-03-92-12</a>
+
+
+                                    <a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
+                                        href="https://www.google.com/maps/place/Universit%C3%A9+d'Alger+3+Annexe+Ben+Aknoun/@36.7639659,3.0112916,17z/data=!3m1!4b1!4m6!3m5!1s0x128fb1b1054e13c1:0xbd8bd5f377cb6f67!8m2!3d36.7639616!4d3.0138665!16s%2Fg%2F11h_ccgmk2?entry=ttu" target="_blank"><CiLocationOn size={18} />Université d&apos;Alger 3, Algiers, Algeria</a>
+
+
+                                    <a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
+                                        href="mailto:egmclubua3@gmail.com"><CiMail size={18} />egmclubua3@gmail.com</a>
+
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+
                     </div>
 
                 </div>
