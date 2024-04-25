@@ -32,9 +32,9 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
 
 
     return (
-        <header className={`flex flex-col bg-white transition-transform ease-in-out duration-300 ${isSticky ? 'sticky top-0 left-0 right-0 z-50 translate-y-[-40%]' : ''}`}>
+        <header className={`flex flex-col bg-white transition-transform ease-in-out duration-500 ${isSticky ? 'sticky top-0 left-0 right-0 z-50 translate-y-[-40%]' : ''}`}>
             <div
-                className={`bg-[#0d2d62] text-white text-sm py-4 sm:flex hidden flex-row justify-around transition-transform duration-300 ${isSticky ? 'translate-y-[-100%]' : ''
+                className={`bg-[#0d2d62] text-white text-sm py-3 sm:flex hidden flex-row justify-around transition-transform duration-500 ${isSticky ? 'translate-y-[-100%]' : ''
                     }`}
             >
                 <a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
@@ -49,7 +49,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                     href="mailto:egmclubua3@gmail.com"><CiMail size={24} />egmclubua3@gmail.com</a>
             </div>
 
-            <div className={`shadow-md flex flex-col sm:items-center justify-between lg:flex-row lg:py-0 py-5 `}>
+            <div className={`shadow-xl flex flex-col sm:items-center justify-between lg:flex-row lg:py-0 py-5 `}>
                 <div className={`sm:flex lg:flex-row flex-col items-center pl-5 py-3 gap-5 hidden`}>
                     <Image
                         src={logo.src}
@@ -63,13 +63,22 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                     </div>
 
                 </div>
-                <div className="flex flex-row justify-between sm:px-0 px-5">
+                <div className="flex flex-row justify-between items-center sm:px-0 px-5">
                     <button
                         className='sm:hidden hover:cursor-pointer hover:text-red-800 transition-all'
                         onClick={() => setSidePanelOpen(!sidePanelOpen)}>
                         {/* {sidePanelOpen ? 'Close Side Panel' : 'Open Side Panel'} */}
                         <CiMenuBurger size={24} strokeWidth={1} className='ml-5 flex' />
                     </button>
+                    <div>
+                        <Image
+                        className='sm:hidden'
+                            src={logo.src}
+                            width={60}
+                            height={100}
+                            alt="Picture of the author"
+                        />
+                    </div>
                     <nav className="hidden sm:flex">
                         <ul className="flex text-lg font-semibold  transition-all">
 
@@ -79,6 +88,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                             <li className="hover:cursor-pointer hover:underline hover:text-red-800 transition-all ml-5">Home</li>
                         </ul>
                     </nav>
+
                     <div className=" hover:cursor-pointer lg:flex hidden px-10">
                         <IoSearch size={24} />
                     </div>
