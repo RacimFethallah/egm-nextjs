@@ -80,12 +80,12 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                         />
                     </div>
                     <nav className="hidden sm:flex">
-                        <ul className="flex text-lg font-semibold  transition-all">
+                        <ul className="flex text-lg font-semibold  transition-all group">
 
-                            <li className="hover:cursor-pointer hover:underline hover:text-red-800 transition-all mr-5">Home</li>
-                            <li className="hover:cursor-pointer hover:underline hover:text-red-800 transition-all mx-5">Home</li>
-                            <li className="hover:cursor-pointer hover:underline hover:text-red-800 transition-all mx-5">Home</li>
-                            <li className="hover:cursor-pointer hover:underline hover:text-red-800 transition-all ml-5">Home</li>
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mr-5">Home</li>
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">Home</li>
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">Home</li>
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all ml-5">Home</li>
                         </ul>
                     </nav>
 

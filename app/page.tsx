@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <>
       <Header sidePanelOpen={sidePanelOpen} setSidePanelOpen={setSidePanelOpen} />
-      <SidePanel sidePanelOpen={sidePanelOpen} />
+      <SidePanel sidePanelOpen={sidePanelOpen} setSidePanelOpen={setSidePanelOpen} />
       {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
       <main>
         <Hero />
-        
-        
+
+
       </main>
       <Footer />
 
