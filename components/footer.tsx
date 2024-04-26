@@ -13,8 +13,8 @@ import {
 
 export default function Footer() {
     return (
-        <footer className='flex flex-row justify-between p-10 px-40'>
-            <div className='space-y-10'>
+        <footer className='flex md:flex-row flex-col items-center justify-between p-10 px-40 space-y-10 md:space-y-0'>
+            <div className='space-y-10 flex flex-row md:flex-col'>
                 <Image
                     src={logo.src}
                     width={150}
@@ -22,6 +22,7 @@ export default function Footer() {
                     alt="Picture of the author"
                 />
                 <Image
+                className='hidden md:block'
                     src={universite.src}
                     width={150}
                     height={100}
@@ -29,7 +30,7 @@ export default function Footer() {
                 />
             </div>
             <div className='w-[300px]'>
-                <p className='font-bold text-lg ml-2'>Contactez-Nous</p>
+                <p className='font-bold text-lg ml-2 text-center md:text-start'>Contactez-Nous</p>
                 <div className='flex flex-row'>
                 <Separator className="mt-2 mb-8 h-0.5 w-12 bg-red-800"  />
                 <Separator className="mt-2 mb-8 h-0.5"  />
@@ -45,7 +46,7 @@ export default function Footer() {
                     <li><a className='flex items-center gap-2 text-red-900 transition-all hover:cursor-pointer'
                         href="mailto:egmclubua3@gmail.com"><CiMail size={18} />egmclubua3@gmail.com</a></li>
                 </ul>
-                <ul className='flex flex-row mt-10 space-x-6 items-center '>
+                <ul className='flex flex-row mt-10 space-x-6 justify-center md:justify-start items-center '>
                     <li className='hover:cursor-pointer'>
                         <Avatar>
                             <AvatarFallback className='hover:bg-slate-300 transition-all'>

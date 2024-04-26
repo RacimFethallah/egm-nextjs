@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { CiLocationOn, CiMail, CiMenuBurger, CiMenuKebab, CiPhone, CiSearch } from 'react-icons/ci';
-import { IoSearch } from 'react-icons/io5';
+import { IoCloseOutline, IoSearch } from 'react-icons/io5';
 import Image from 'next/image'
 import logo from '../assets/logo.png'
 import SidePanel from './sidepanel';
@@ -15,6 +15,11 @@ import {
 
 export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelOpen: boolean, setSidePanelOpen: Function }) {
     const [isSticky, setIsSticky] = useState(false);
+    const [showSearchBar, setShowSearchBar] = useState(false);
+
+    const toggleSearchBar = () => {
+        setShowSearchBar(!showSearchBar);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -72,25 +77,51 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                     </button>
                     <div>
                         <Image
-                        className='sm:hidden'
+                            className='sm:hidden'
                             src={logo.src}
                             width={60}
                             height={100}
                             alt="Picture of the author"
                         />
                     </div>
-                    <nav className="hidden sm:flex">
-                        <ul className="flex text-lg font-semibold  transition-all group">
-
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mr-5">Home</li>
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">Home</li>
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">Home</li>
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all ml-5">Home</li>
+                    <nav className={`sm:flex hidden ${showSearchBar ? 'sm:hidden' : 'block'}`}>
+                        <ul className="flex text-lg font-semibold transition-all group">
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mr-5">
+                                Home
+                            </li>
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
+                                Home
+                            </li>
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
+                                Home
+                            </li>
+                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all ml-5">
+                                Home
+                            </li>
                         </ul>
                     </nav>
-
-                    <div className=" hover:cursor-pointer lg:flex hidden px-10">
-                        <IoSearch size={24} />
+                    <div
+                        className="hover:cursor-pointer lg:flex hidden px-10 relative"
+                        onClick={toggleSearchBar}
+                    >
+                        {showSearchBar ? (
+                            <IoCloseOutline size={28} onClick={toggleSearchBar} />
+                        ) : (
+                            <IoSearch size={24} />
+                        )}
+                        <div
+                            className={`fixed top-20 right-0 pr-24 transition-transform duration-700 ${showSearchBar
+                                ? 'translate-x-0'
+                                : 'translate-x-full '
+                                }`}
+                        >
+                            <input
+                                onClick={(e) => e.stopPropagation()}
+                                type="text"
+                                placeholder="Search..."
+                                className={`px-4 py-2 shadow-md border-none border-gray-300 rounded-md w-96`}
+                            />
+                        </div>
                     </div>
                     <div className=" hover:cursor-pointer sm:hidden">
                         <Popover>
