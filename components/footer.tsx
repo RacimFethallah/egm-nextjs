@@ -29,15 +29,20 @@ export default function Footer() {
                 />
             </div>
             <div className='w-[300px]'>
-                <p className='font-bold text-lg ml-2'>Contact us</p>
-                <Separator className="mt-2 mb-8 font-bold" />
+                <p className='font-bold text-lg ml-2'>Contactez-Nous</p>
+                <div className='flex flex-row'>
+                <Separator className="mt-2 mb-8 h-0.5 w-12 bg-red-800"  />
+                <Separator className="mt-2 mb-8 h-0.5"  />
+
+
+                </div>
                 <ul className='space-y-5 text-base'>
                     <li><a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
                         href="tel:+213799039212"><CiPhone size={18} />+213 799-03-92-12</a>
                     </li>
                     <li><a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
                         href="https://www.google.com/maps/place/Universit%C3%A9+d'Alger+3+Annexe+Ben+Aknoun/@36.7639659,3.0112916,17z/data=!3m1!4b1!4m6!3m5!1s0x128fb1b1054e13c1:0xbd8bd5f377cb6f67!8m2!3d36.7639616!4d3.0138665!16s%2Fg%2F11h_ccgmk2?entry=ttu" target="_blank"><CiLocationOn size={18} />Université d&apos;Alger 3, Algiers, Algeria</a></li>
-                    <li><a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
+                    <li><a className='flex items-center gap-2 text-red-900 transition-all hover:cursor-pointer'
                         href="mailto:egmclubua3@gmail.com"><CiMail size={18} />egmclubua3@gmail.com</a></li>
                 </ul>
                 <ul className='flex flex-row mt-10 space-x-6 items-center '>
