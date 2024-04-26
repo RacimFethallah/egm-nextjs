@@ -6,9 +6,21 @@ import { useState } from "react";
 import bg from "@/assets/uni1.jpg";
 import Hero from "@/components/hero";
 import Footer from "@/components/footer";
+import Video from 'next-video';
+import YouTube from "react-youtube";
+// import awesomeVideo from 'https://www.youtube.com/watch?v=XDqEvmxnLeY';
 
 export default function Home() {
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
+  const opts = {
+    height: "480",
+    width: "860",
+    playerVars: {
+      autoplay: 0,
+    },
+  };
+
+
 
   return (
     <>
@@ -18,10 +30,17 @@ export default function Home() {
       <main>
         <Hero />
 
+        {/* <div className="mt-10 flex items-center flex-col">
+          <YouTube videoId="XDqEvmxnLeY"
+            opts={opts} onReady={(event) => event.target.pauseVideo()} />
+        </div> */}
+
 
       </main>
       <Footer />
 
     </>
+
   );
+
 }
