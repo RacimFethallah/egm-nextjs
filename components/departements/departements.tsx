@@ -14,8 +14,8 @@ export default function Departements() {
             <p className="text-center mt-20 text-gray-500 text-md">
                 Nos principaux départements
             </p>
-            <div className="flex flex-row mt-10 space-x-40">
-                <div className="flex flex-col items-center">
+            <div className="flex flex-col lg:flex-row mt-10 lg:space-x-40 space-y-16 lg:space-y-0">
+                <div className="flex flex-col items-center text-center">
                     <div className="flex w-40 h-40 border-2 border-gray-300 rounded-full justify-center items-center text-blue-950">
                         <HiOutlineUserGroup size={50} />
                     </div>
@@ -26,7 +26,7 @@ export default function Departements() {
 
                 </div>
 
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center text-center">
                     <div className="flex w-40 h-40 border-2 border-gray-300 rounded-full justify-center items-center text-blue-950">
                         <MdWorkOutline size={50} />
                     </div>
@@ -36,7 +36,7 @@ export default function Departements() {
                     </h2>
 
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center text-center">
                     <div className="flex w-40 h-40 border-2 border-gray-300 rounded-full justify-center items-center text-blue-950">
                         <MdOutlineColorLens size={50} />
                     </div>
@@ -46,7 +46,7 @@ export default function Departements() {
                     </h2>
 
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center text-center">
                     <div className="flex w-40 h-40 border-2 border-gray-300 rounded-full justify-center items-center text-blue-950">
                         first
                     </div>
