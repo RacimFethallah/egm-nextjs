@@ -84,31 +84,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                             alt="Picture of the author"
                         />
                     </div>
-                    <nav className={`sm:flex hidden ${showSearchBar ? 'sm:hidden' : 'block'}`}>
-                        <ul className="flex text-lg font-semibold transition-all group">
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mr-5">
-                                Home
-                            </li>
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
-                                Home
-                            </li>
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
-                                Home
-                            </li>
-                            <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all ml-5">
-                                Home
-                            </li>
-                        </ul>
-                    </nav>
-                    <div
-                        className="hover:cursor-pointer lg:flex hidden px-10 relative"
-                        onClick={toggleSearchBar}
-                    >
-                        {showSearchBar ? (
-                            <IoCloseOutline size={28} onClick={toggleSearchBar} />
-                        ) : (
-                            <IoSearch size={24} />
-                        )}
+                    {showSearchBar ? (
                         <div
                             className={`fixed top-20 right-0 pr-24 transition-transform duration-700 ${showSearchBar
                                 ? 'translate-x-0'
@@ -122,6 +98,34 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                                 className={`px-4 py-2 shadow-md border-none border-gray-300 rounded-md w-96`}
                             />
                         </div>
+                    ) : (
+                        <nav className={`sm:flex hidden ${showSearchBar ? 'sm:hidden' : 'block'}`}>
+                            <ul className="flex text-lg font-semibold transition-all group">
+                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mr-5">
+                                    Home
+                                </li>
+                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
+                                    Home
+                                </li>
+                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
+                                    Home
+                                </li>
+                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all ml-5">
+                                    Home
+                                </li>
+                            </ul>
+                        </nav>
+                    )}
+
+                    <div
+                        className="hover:cursor-pointer lg:flex hidden px-10 relative"
+                        onClick={toggleSearchBar}
+                    >
+                        {showSearchBar ? (
+                            <IoCloseOutline size={28} onClick={toggleSearchBar} />
+                        ) : (
+                            <IoSearch size={24} />
+                        )}
                     </div>
                     <div className=" hover:cursor-pointer sm:hidden">
                         <Popover>
