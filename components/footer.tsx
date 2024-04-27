@@ -50,7 +50,7 @@ export default function Footer() {
                     <ul className='flex flex-row mt-10 space-x-6 justify-center lg:justify-start items-center '>
                         <li className='hover:cursor-pointer'>
                             <Avatar>
-                                <AvatarFallback className='hover:bg-[#395b98] hover:text-white transition-all'>
+                                <AvatarFallback className='hover:bg-[#395b98] hover:text-white transition-all duration-300'>
                                     <a href="https://www.facebook.com/EGMClub.UA3/" target='_blank'><CiFacebook size={24} />
                                     </a>
                                 </AvatarFallback>
@@ -58,7 +58,7 @@ export default function Footer() {
                         </li>
                         <li className='hover:cursor-pointer '>
                             <Avatar>
-                                <AvatarFallback className='hover:text-white hover:bg-gradient-to-br hover:from-[#734fbf] hover:via-[#e33a6d] hover:to-[#f5a67a] transition-all'>
+                                <AvatarFallback className='hover:text-white hover:bg-gradient-to-br hover:from-[#734fbf] hover:via-[#e33a6d] hover:to-[#f5a67a] transition-all duration-300'>
                                     <a href="https://www.instagram.com/egm_club/" target='_blank'><CiInstagram size={24} />
                                     </a>
                                 </AvatarFallback>
@@ -66,13 +66,13 @@ export default function Footer() {
                         </li>
                         <li className='hover:cursor-pointer '>
                             <Avatar>
-                                <AvatarFallback className='hover:bg-[#0e76ab] hover:text-white transition-all'>
+                                <AvatarFallback className='hover:bg-[#0e76ab] hover:text-white transition-all duration-300'>
                                     <a href="https://www.linkedin.com/company/ecoclubua3?trk=public_profile_topcard-current-company" target='_blank'><CiLinkedin size={24} /></a></AvatarFallback>
                             </Avatar>
                         </li>
                         <li className='hover:cursor-pointer'>
                             <Avatar>
-                                <AvatarFallback className='hover:bg-[#d95139] hover:text-white transition-all'>
+                                <AvatarFallback className='hover:bg-[#d95139] hover:text-white transition-all duration-300'>
                                     <a href="https://www.youtube.com/channel/UCaUqjEN8-HQQS7zkxaSheZw?sub_confirmation=1" target='_blank'><CiYoutube size={24} /></a>
                                 </AvatarFallback>
                             </Avatar>
