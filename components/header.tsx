@@ -101,17 +101,17 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                     ) : (
                         <nav className={`sm:flex hidden ${showSearchBar ? 'sm:hidden' : 'block'}`}>
                             <ul className="flex text-lg font-semibold transition-all group">
-                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mr-5">
-                                    Home
+                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mr-5">
+                                    Acceuil
                                 </li>
-                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
-                                    Home
+                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mx-5">
+                                    Departements
                                 </li>
-                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all mx-5">
-                                    Home
+                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mx-5">
+                                    Evenements
                                 </li>
-                                <li className="hover:cursor-pointer hover-underline-animation hover:text-red-800 transition-all ml-5">
-                                    Home
+                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all ml-5">
+                                    Formations
                                 </li>
                             </ul>
                         </nav>

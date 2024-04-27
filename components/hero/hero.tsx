@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Image from "next/image";
-import uni1 from "@/assets/uni1.jpg";
-import uni2 from "@/assets/uni2.jpg";
-import uni3 from "@/assets/uni3.jpg";
+import uni1 from "@/assets/e1.jpg";
+import uni2 from "@/assets/e2.jpg";
+import uni3 from "@/assets/e4.jpg";
 
 export default function Hero() {
   const images = [
-    { src: uni1.src, alt: "uni1", text: "Image 1" },
-    { src: uni2.src, alt: "uni1", text: "Image 2" },
-    { src: uni3.src, alt: "uni1", text: "Image 3" }
+    { src: uni1.src, alt: "uni1", text: "" },
+    { src: uni2.src, alt: "uni1", text: "" },
+    { src: uni3.src, alt: "uni1", text: "" }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,14 +32,14 @@ export default function Hero() {
   };
 
   return (
-    <div className="w-screen h-screen relative">
+    <div className="w-screen h-screen relative shadow-xl">
       {images.map((image, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'
             }`}
         >
-          <Image src={image.src} fill={true} objectFit="cover" alt={image.alt} />
+          <Image src={image.src} fill={true} objectFit="cover" alt={image.alt} className='brightness-75' />
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <h1
               className={`text-white text-7xl font-bold transition-all duration-1000 ${showText && index === currentIndex
