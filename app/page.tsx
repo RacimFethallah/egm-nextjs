@@ -4,7 +4,7 @@ import SidePanel from "@/components/sidepanel";
 import Image from "next/image";
 import { useState } from "react";
 import bg from "@/assets/uni1.jpg";
-import Hero from "@/components/hero";
+import Hero from "@/components/hero/hero";
 import Footer from "@/components/footer";
 import Video from 'next-video';
 import YouTube from "react-youtube";
