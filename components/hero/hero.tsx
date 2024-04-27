@@ -32,7 +32,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="w-screen h-screen relative shadow-xl">
+    <div className="w-screen h-[80vh] relative shadow-xl">
       {images.map((image, index) => (
         <div
           key={index}
