@@ -30,7 +30,7 @@ export default function Footer() {
                         alt="Picture of the author"
                     />
                 </div>
-                <div className='w-[300px]'>
+                <div className='w-[280px]'>
                     <p className='font-bold text-lg ml-2 text-center lg:text-start'>Contactez-Nous</p>
                     <div className='flex flex-row'>
                         <Separator className="mt-2 mb-8 h-0.5 w-12 bg-red-800" />
@@ -79,7 +79,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className='w-[300px]'>
+                <div className='w-[280px]'>
                     <p className='font-bold text-lg ml-2 text-center lg:text-start'>Newsletter</p>
                     <div className='flex flex-row mt-2 mb-6'>
                         <Separator className=" h-0.5 w-12 bg-red-800" />
