@@ -157,6 +157,16 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
 
 
             </div>
+            {/* <div
+                className={`bg-red-700 text-white text-sm py-2 sm:flex hidden flex-row justify-around transition-transform duration-300 ${isSticky ? 'translate-y-0' : ''
+                    } overflow-hidden whitespace-nowrap`}
+            >
+                <span
+                    className={` animate-scroll`}
+                >
+                    heey this is a new text
+                </span>
+            </div> */}
         </header>
     )
 }
