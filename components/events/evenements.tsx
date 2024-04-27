@@ -23,8 +23,8 @@ export default function Evenements() {
             location: "Université d'Alger 3",
             dateTime: {
                 day: 12,
-                month: "Octobre",
-                year: 2021,
+                month: 9,
+                year: 2024,
                 hour: 12,
                 minute: 0,
             }
@@ -38,14 +38,72 @@ export default function Evenements() {
             location: "Université d'Alger 3",
             dateTime: {
                 day: 12,
-                month: "Septembre",
-                year: 2021,
+                month: 7,
+                year: 2024,
+                hour: 12,
+                minute: 0,
+            }
+        },
+        {
+            title: "Premiere evenement",
+            description: "Deploy your new project in one-click.",
+            image: { src: uni1.src, alt: "uni1" },
+            person: "John Doe",
+            location: "Université d'Alger 3",
+            dateTime: {
+                day: 12,
+                month: 8,
+                year: 2024,
+                hour: 12,
+                minute: 0,
+            }
+        },
+        {
+            title: "Premiere evenement",
+            description: "Deploy your new project in one-click.",
+            image: { src: uni1.src, alt: "uni1" },
+            person: "John Doe",
+            location: "Université d'Alger 3",
+            dateTime: {
+                day: 12,
+                month: 6,
+                year: 2024,
                 hour: 12,
                 minute: 0,
             }
         },
 
     ];
+
+    const filteredEvents = events.filter(event => {
+        const eventDate = new Date(
+            event.dateTime.year,
+            event.dateTime.month - 1,
+            event.dateTime.day,
+            event.dateTime.hour,
+            event.dateTime.minute
+        );
+        const currentDate = new Date();
+        return eventDate >= currentDate;
+    })
+
+    const sortedEvents = filteredEvents.sort((a, b) => {
+        const dateA = new Date(
+            a.dateTime.year,
+            a.dateTime.month - 1,
+            a.dateTime.day,
+            a.dateTime.hour,
+            a.dateTime.minute
+        );
+        const dateB = new Date(
+            b.dateTime.year,
+            b.dateTime.month - 1,
+            b.dateTime.day,
+            b.dateTime.hour,
+            b.dateTime.minute
+        );
+        return dateB.getTime() - dateA.getTime();
+    })
 
 
 
@@ -60,7 +118,7 @@ export default function Evenements() {
                 Nos principaux départements
             </p> */}
             <div className={`grid mt-20  justify-center grid-cols-1 lg:gap-x-40 gap-y-20 ${events.length == 1 ? 'lg:grid-cols-1' : 'lg:grid-cols-2'}`}>
-                {events.map((event, index) => (
+                {sortedEvents.map((event, index) => (
                     <Card className="w-96 " key={index}>
                         {/* <CardHeader>
                             <CardTitle>{event.title}</CardTitle>
@@ -72,14 +130,14 @@ export default function Evenements() {
                                 alt={event.image.alt}
                                 layout='fill'
                                 objectFit='cover'
-                                className='rounded-t-md'
+                                className='rounded-t-md hover:cursor-pointer transition-all duration-300 hover:brightness-50'
 
                             />
                         </CardContent>
                         <CardFooter className="flex p-0 items-start ">
 
-                            <div className=' w-24 h-20 bg-blue-900  text-white flex flex-col items-center p-2  rounded-bl-md'>
-                                <span className='font-bold text-xl'>{event.dateTime.day}</span>
+                            <div className=' w-24 h-20 bg-blue-900  text-white flex flex-col items-center p-1  rounded-bl-md'>
+                                <span className='font-bold text-2xl'>{event.dateTime.day}</span>
                                 <span className='font-light text-sm'>{event.dateTime.month}</span>
 
                                 <span className='font-bold text-xs'>{event.dateTime.hour}:{event.dateTime.minute < 10 ? `0${event.dateTime.minute}` : ''}</span>
@@ -94,10 +152,10 @@ export default function Evenements() {
                                     {event.title}
                                 </h1>
                                 <span className='text-sm font-light flex items-center gap-2 mt-1'>
-                                <IoPersonOutline /> {event.person}
+                                    <IoPersonOutline /> {event.person}
                                 </span>
                                 <span className='text-sm font-light flex items-center gap-2'>
-                                <IoLocationOutline /> {event.location}
+                                    <IoLocationOutline /> {event.location}
                                 </span>
 
                             </div>
@@ -107,6 +165,9 @@ export default function Evenements() {
 
 
             </div>
+            <button className='mt-20 bg-blue-900 hover:bg-red-800 transition-all duration-300 text-white text-lg font-semibold rounded-lg py-3 px-10'>
+                Voir Tout
+            </button>
 
 
         </section>
