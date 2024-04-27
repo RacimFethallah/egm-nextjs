@@ -11,6 +11,8 @@ import YouTube from "react-youtube";
 // import awesomeVideo from 'https://www.youtube.com/watch?v=XDqEvmxnLeY';
 import { Separator } from '@/components/ui/separator'
 import Departements from "@/components/departements/departements";
+import Evenements from "@/components/events/evenements";
+
 
 export default function Home() {
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
@@ -38,6 +40,9 @@ export default function Home() {
         </div> */}
 
         <Departements />
+        <Separator className="mt-2 mb-8 h-0.5" />
+        <Evenements />
+        
 
 
       </main>
