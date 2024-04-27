@@ -14,7 +14,7 @@ import {
 export default function Footer() {
     return (
         <footer className='flex flex-col'>
-            <div className='flex flex-row px-40 p-10 space-y-14 lg:space-y-0 justify-between items-center lg:items-start'>
+            <div className='flex flex-col lg:flex-row px-40 p-10 space-y-14 lg:space-y-0 justify-between items-center lg:items-start'>
                 <div className='space-y-10 flex flex-row lg:flex-col'>
                     <Image
                         src={logo.src}
@@ -96,7 +96,7 @@ export default function Footer() {
             </div>
 
 
-            <div className='w-full text-white text-sm font-light bg-[#0d2d62] p-1 pl-40'>
+            <div className='w-full text-white text-sm font-light bg-[#0d2d62] p-1 lg:pl-40 text-center lg:text-start'>
 
 
                 © 2024. All Rights Reserved.
