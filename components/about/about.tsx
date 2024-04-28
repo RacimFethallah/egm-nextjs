@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Separator } from '../ui/separator'
 import YouTube from "react-youtube";
 import { AnimatePresence, motion } from 'framer-motion';
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function About() {
 
     const [showVideo, setShowVideo] = useState(false);
+    const [isVideoReady, setIsVideoReady] = useState(false);
 
 
     const [opts, setOpts] = useState({
@@ -40,10 +42,22 @@ export default function About() {
         };
     }, []);
 
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setIsVideoReady(true);
+        }, 2000); // Trigger handleVideoReady after 3 seconds
 
-  const toggleVideo = () => {
-    setShowVideo((prevShowVideo) => !prevShowVideo);
-  };
+        return () => clearTimeout(timeoutId);
+    }, []);
+
+
+    const toggleVideo = () => {
+        setShowVideo((prevShowVideo) => !prevShowVideo);
+    };
+
+    const handleVideoReady = () => {
+        setIsVideoReady(true);
+    };
 
     return (
         <section id="about"
@@ -52,16 +66,26 @@ export default function About() {
 
             <motion.div className='mt-10'
                 layoutId='Wg9YjvJ7Ks8'>
-                <YouTube videoId="Wg9YjvJ7Ks8"
-                    opts={opts} onReady={(event) => event.target.pauseVideo()}
-                    onPlay={(event) => { if (showVideo== false) { event.target.pauseVideo(); setShowVideo(true)} }} />
+                {isVideoReady ? (
+                    <YouTube videoId="Wg9YjvJ7Ks8"
+                        opts={opts} onReady={handleVideoReady}
+                        onPlay={(event) => { if (showVideo == false) { event.target.pauseVideo(); setShowVideo(true) } }} />
+                ) : (
+                    <div className="flex flex-col space-y-3">
+                        <Skeleton className="h-[340px] w-[600px] rounded-xl" />
+                        <div className="space-y-2">
+                            <Skeleton className="h-4 w-[250px]" />
+                            <Skeleton className="h-4 w-[200px]" />
+                        </div>
+                    </div>
+                )}
             </motion.div>
 
 
 
             {showVideo && (
                 <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"
-                onClick={toggleVideo}></div>
+                    onClick={toggleVideo}></div>
             )}
             <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
                 <AnimatePresence>
