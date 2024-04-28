@@ -12,6 +12,7 @@ import YouTube from "react-youtube";
 import { Separator } from '@/components/ui/separator'
 import Departements from "@/components/departements/departements";
 import Evenements from "@/components/events/evenements";
+import Formations from "@/components/formations/formations";
 
 
 export default function Home() {
@@ -40,13 +41,15 @@ export default function Home() {
         </div> */}
 
         <Departements />
-        <Separator className="mt-2 mb-8 h-0.5" />
+        <Separator className=" mb-8 h-0.5" />
         <Evenements />
+        <Separator className=" mb-8 h-0.5" />
+        <Formations />
         
 
 
       </main>
-      <Separator className="mt-2 mb-8 h-0.5" />
+      <Separator className=" mb-8 h-0.5" />
       <Footer />
 
     </>

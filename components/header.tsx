@@ -99,7 +99,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                             />
                         </div>
                     ) : (
-                        <nav className={`sm:flex hidden ${showSearchBar ? 'sm:hidden' : 'block'}`}>
+                        <nav className={`sm:flex hidden ${showSearchBar ? 'sm:hidden' : 'block'} px-10`}>
                             <ul className="flex text-lg font-semibold transition-all group">
                                 <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mr-5">
                                     Acceuil
@@ -117,7 +117,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                         </nav>
                     )}
 
-                    <div
+                    {/* <div
                         className="hover:cursor-pointer lg:flex hidden px-10 relative"
                         onClick={toggleSearchBar}
                     >
@@ -126,7 +126,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                         ) : (
                             <IoSearch size={24} />
                         )}
-                    </div>
+                    </div> */}
                     <div className=" hover:cursor-pointer sm:hidden">
                         <Popover>
                             <PopoverTrigger>
