@@ -190,7 +190,7 @@ export default function Evenements() {
 
 
             {/* old way*/}
-            <div className={`grid mt-14 justify-center grid-cols-1 lg:gap-x-40 gap-y-20 ${sortedEvents.length <= 1 ? 'lg:grid-cols-1' : 'lg:grid-cols-2'}`}>
+            <div className={`grid mt-14 justify-center grid-cols-1 lg:gap-x-36 gap-y-20 ${sortedEvents.length <= 1 ? 'lg:grid-cols-1' : sortedEvents.length == 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3' }`}>
                 {sortedEvents.length === 0 && <h1 className='text-xl font-semibold text-gray-500'>Aucun évènement ce mois-ci</h1>}
 
                 {sortedEvents.map((event, index) => (
