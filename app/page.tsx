@@ -13,6 +13,7 @@ import { Separator } from '@/components/ui/separator'
 import Departements from "@/components/departements/departements";
 import Evenements from "@/components/events/evenements";
 import Formations from "@/components/formations/formations";
+import About from "@/components/about/about";
 
 
 export default function Home() {
@@ -35,11 +36,10 @@ export default function Home() {
       <main>
         <Hero />
 
-        {/* <div className="mt-10 flex items-center flex-col">
-          <YouTube videoId="XDqEvmxnLeY"
-            opts={opts} onReady={(event) => event.target.pauseVideo()} />
-        </div> */}
 
+
+        <About />
+        <Separator className=" h-0.5" />
         <Departements />
         <Separator className=" mb-8 h-0.5" />
         <Evenements />
