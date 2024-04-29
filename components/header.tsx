@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react'
+import { links } from '@/lib/data';
 import { CiLocationOn, CiMail, CiMenuBurger, CiMenuKebab, CiPhone, CiSearch } from 'react-icons/ci';
 import { IoCloseOutline, IoSearch } from 'react-icons/io5';
 import Image from 'next/image'
@@ -11,9 +12,13 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import { useActiveSectionContext } from '@/context/active-section-context';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 
 export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelOpen: boolean, setSidePanelOpen: Function }) {
+    const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     const [isSticky, setIsSticky] = useState(false);
     const [showSearchBar, setShowSearchBar] = useState(false);
 
@@ -57,10 +62,12 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
             <div className={`shadow-xl flex flex-col sm:items-center justify-between lg:flex-row lg:py-0 py-5 `}>
                 <div className={`sm:flex lg:flex-row flex-col items-center pl-5 py-3 gap-5 hidden`}>
                     <Image
+                        onClick={() => { window.location.href = '/' }}
                         src={logo.src}
                         width={isSticky ? 70 : 100}
                         height={100}
                         alt="Picture of the author"
+                        className='hover:cursor-pointer transition-all'
                     />
                     <div className='flex flex-col items-center lg:items-start'>
                         <div className='font-bold text-lg font-sans'>Entrepreneur Growth Mindset</div>
@@ -68,6 +75,8 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                     </div>
 
                 </div>
+
+
                 <div className="flex flex-row justify-between items-center sm:px-0 px-5">
                     <button
                         className='sm:hidden hover:cursor-pointer hover:text-red-800 transition-all'
@@ -101,18 +110,40 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                     ) : (
                         <nav className={`sm:flex hidden ${showSearchBar ? 'sm:hidden' : 'block'} px-10`}>
                             <ul className="flex text-lg font-semibold transition-all group">
-                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mr-5">
-                                    Acceuil
-                                </li>
-                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mx-5">
-                                    Departements
-                                </li>
-                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mx-5">
-                                    Evenements
-                                </li>
-                                <li className="hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all ml-5">
-                                    Formations
-                                </li>
+                                {
+                                    links.map(link => (
+                                        <motion.li
+                                            key={link.hash}
+
+                                            className={` hover:cursor-pointer hover:shadow-lg hover-underline-animation hover:text-red-800 transition-all mx-5 
+                                            ${activeSection == link.name ? 'text-red-800 shadow-lg' : ''}  `}>
+                                            <Link
+                                                onClick={() => {
+                                                    setActiveSection(link.name);
+                                                    setTimeOfLastClick(Date.now());
+                                                }}
+                                                href={link.hash}>
+                                                {link.name}
+                                                {
+                                                    link.name === activeSection && (
+                                                        <motion.span className='bg-black dark:bg-slate-200 dark:text-blue-950 
+                                             rounded-full block h-1 backdrop-blur-[0.5rem]'
+                                                            layoutId='activeSection'
+                                                            transition={{
+                                                                type: 'spring',
+                                                                stiffness: '380',
+                                                                damping: '30',
+                                                            }}
+                                                        ></motion.span>
+                                                    )
+                                                }
+
+                                            </Link>
+
+                                        </motion.li>
+
+                                    ))
+                                }
                             </ul>
                         </nav>
                     )}

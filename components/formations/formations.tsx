@@ -1,9 +1,13 @@
 import React from 'react'
 import { Separator } from '../ui/separator'
+import { useSectionInView } from '@/lib/hooks';
 
 export default function Formations() {
+    const { ref } = useSectionInView('Formations', 0.5);
+
     return (
         <section id="Formations"
+        ref={ref}
             className="flex flex-col items-center justify-start py-32 ">
             <h1 className="text-5xl font-bold">
                 Formations

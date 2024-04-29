@@ -3,9 +3,10 @@ import { Separator } from '../ui/separator'
 import YouTube from "react-youtube";
 import { AnimatePresence, motion } from 'framer-motion';
 import { Skeleton } from "@/components/ui/skeleton"
+import { useSectionInView } from '@/lib/hooks';
 
 export default function About() {
-
+    const { ref } = useSectionInView('À propos', 0.5);
     const [showVideo, setShowVideo] = useState(false);
     const [isVideoReady, setIsVideoReady] = useState(false);
 
@@ -60,7 +61,8 @@ export default function About() {
     };
 
     return (
-        <section id="about"
+        <motion.section id="about"
+            ref={ref}
             className="flex lg:flex-row flex-col items-center justify-around py-14 gap-10 lg:gap-28 px-20 ">
 
 
@@ -127,6 +129,6 @@ export default function About() {
             </button> */}
 
 
-        </section>
+        </motion.section>
     )
 }

@@ -15,9 +15,13 @@ import { CiLocationOn } from 'react-icons/ci';
 import { Event } from '@/lib/types';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '../ui/carousel';
 import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
+import { useSectionInView } from '@/lib/hooks';
 
 
 export default function Evenements() {
+    const { ref } = useSectionInView('Evenements', 0.5);
+
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [apiMonths, setApiMonths] = React.useState<CarouselApi>()
     const [apiEvents, setApiEvents] = React.useState<CarouselApi>()
@@ -165,7 +169,9 @@ export default function Evenements() {
 
 
     return (
-        <section id="Evenements"
+        <motion.section 
+        id="Evenements"
+        ref={ref}
             className="flex flex-col items-center justify-start py-32 ">
             <h1 className="text-5xl font-bold">
                 Évènements
@@ -235,7 +241,7 @@ export default function Evenements() {
 
 
 
-        </section>
+        </motion.section>
     )
 }
 
@@ -260,12 +266,13 @@ const EventCard = ({ event }: { event: Event }) => {
 
                     />
                     <div className='flex flex-col justify-center items-center '>
-                        <button
+                        <Link href={'https://forms.gle/vRTSDyN56rKQmHNm6'}
+                        target='_blank'
                             className={`absolute bottom-1/2 bg-red-800 hover:bg-blue-900 text-white text-md tracking-widest font-semibold px-6 py-3 rounded-md transition-all duration-300 transform ${isHovered ? "translate-y-0 opacity-100" : "translate-y-full  opacity-0"}`}
 
                         >
                             Participer
-                        </button>
+                        </Link>
                     </div>
 
                 </CardContent>

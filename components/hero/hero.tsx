@@ -3,8 +3,12 @@ import Image from "next/image";
 import uni1 from "@/assets/e1.jpg";
 import uni2 from "@/assets/e2.jpg";
 import uni3 from "@/assets/e4.jpg";
+import { useSectionInView } from '@/lib/hooks';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
+  const { ref } = useSectionInView('Acceuil', 0.5);
+
   const images = [
     { src: uni1.src, alt: "uni1", text: "" },
     { src: uni2.src, alt: "uni1", text: "" },
@@ -32,7 +36,9 @@ export default function Hero() {
   };
 
   return (
-    <div className="w-screen h-[80vh] relative shadow-xl">
+    <motion.section
+    ref={ref}
+     className="w-screen h-[80vh] relative shadow-xl">
       {images.map((image, index) => (
         <div
           key={index}
@@ -63,6 +69,6 @@ export default function Hero() {
           />
         ))}
       </div>
-    </div>
+    </motion.section>
   );
 }

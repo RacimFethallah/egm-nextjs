@@ -14,6 +14,7 @@ import Departements from "@/components/departements/departements";
 import Evenements from "@/components/events/evenements";
 import Formations from "@/components/formations/formations";
 import About from "@/components/about/about";
+import ActiveSectionContextProvider from "@/context/active-section-context";
 
 
 export default function Home() {
@@ -30,27 +31,29 @@ export default function Home() {
 
   return (
     <>
-      <Header sidePanelOpen={sidePanelOpen} setSidePanelOpen={setSidePanelOpen} />
-      <SidePanel sidePanelOpen={sidePanelOpen} setSidePanelOpen={setSidePanelOpen} />
-      {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
-      <main>
-        <Hero />
+      <ActiveSectionContextProvider>
+        <Header sidePanelOpen={sidePanelOpen} setSidePanelOpen={setSidePanelOpen} />
+        <SidePanel sidePanelOpen={sidePanelOpen} setSidePanelOpen={setSidePanelOpen} />
+        {/* <main className="flex min-h-screen flex-col items-center justify-between p-24"> */}
+        <main>
+          <Hero />
 
 
 
-        <About />
-        <Separator className=" h-0.5" />
-        <Departements />
+          <About />
+          <Separator className=" h-0.5" />
+          <Departements />
+          <Separator className=" mb-8 h-0.5" />
+          <Evenements />
+          <Separator className=" mb-8 h-0.5" />
+          <Formations />
+
+
+
+        </main>
         <Separator className=" mb-8 h-0.5" />
-        <Evenements />
-        <Separator className=" mb-8 h-0.5" />
-        <Formations />
-        
-
-
-      </main>
-      <Separator className=" mb-8 h-0.5" />
-      <Footer />
+        <Footer />
+      </ActiveSectionContextProvider>
 
     </>
 

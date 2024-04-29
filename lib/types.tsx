@@ -1,3 +1,5 @@
+import { links } from "./data";
+
 export type Event = {
     title: string;
     description: string;
@@ -16,3 +18,6 @@ export type Event = {
         minute: number;
     };
 };
+
+
+export type SectionName = (typeof links)[number]["name"];
