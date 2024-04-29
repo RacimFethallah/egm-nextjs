@@ -10,10 +10,11 @@ import {
 import { Separator } from '../ui/separator'
 import uni1 from "@/assets/e1.jpg";
 import Image from 'next/image';
-import { IoLocationOutline, IoPersonOutline } from "react-icons/io5";
+import { IoClose, IoLocationOutline, IoPersonOutline } from "react-icons/io5";
 import { CiLocationOn } from 'react-icons/ci';
 import { Event } from '@/lib/types';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '../ui/carousel';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 export default function Evenements() {
@@ -63,7 +64,7 @@ export default function Evenements() {
 
     const events = [
         {
-            title: "Premiere evenement",
+            title: "Premiere evenement 1",
             description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
             image: { src: uni1.src, alt: "uni1" },
             person: "John Doe",
@@ -79,7 +80,7 @@ export default function Evenements() {
 
         },
         {
-            title: "Premiere evenement",
+            title: "Premiere evenement 2",
             description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
             image: { src: uni1.src, alt: "uni1" },
             person: "John Doe",
@@ -95,7 +96,7 @@ export default function Evenements() {
 
         },
         {
-            title: "Premiere evenement",
+            title: "Premiere evenement 3",
             description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
             image: { src: uni1.src, alt: "uni1" },
             person: "John Doe",
@@ -155,6 +156,12 @@ export default function Evenements() {
     })
 
 
+    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+
+    function handleEventClick(event: Event): void {
+        setSelectedEvent(event);
+    }
+
 
 
     return (
@@ -190,15 +197,42 @@ export default function Evenements() {
 
 
             {/* old way*/}
-            <div className={`grid mt-14 justify-center grid-cols-1 lg:gap-x-36 gap-y-20 ${sortedEvents.length <= 1 ? 'lg:grid-cols-1' : sortedEvents.length == 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3' }`}>
+            <div className={`grid mt-14 justify-center grid-cols-1 lg:gap-x-36 gap-y-20 ${sortedEvents.length <= 1 ? 'lg:grid-cols-1' : sortedEvents.length == 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}`}>
                 {sortedEvents.length === 0 && <h1 className='text-xl font-semibold text-gray-500'>Aucun évènement ce mois-ci</h1>}
 
                 {sortedEvents.map((event, index) => (
-                    <EventCard key={index} event={event} />
+                    <div key={index}
+                        onClick={() => handleEventClick(event)}>
+                        <EventCard event={event} />
+                    </div>
+
                 ))}
 
 
             </div>
+            {selectedEvent && (
+                <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+            )}
+            <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 ">
+                <AnimatePresence>
+                    {selectedEvent && (
+                        <motion.div
+                            layoutId={selectedEvent.title}
+                            className="bg-[#f5f7fa] w-96 h-80  p-6 !rounded-xl shadow-md "
+                        >
+                            <motion.button
+                                onClick={() => setSelectedEvent(null)}
+                                className="bg-red-500 hover:bg-red-800 text-white float-right p-1 rounded-full"
+                            >
+                                <IoClose />
+                            </motion.button>
+                            <motion.h2 className="text-2xl font-bold mb-4">{selectedEvent.title}</motion.h2>
+
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+
 
 
         </section>
@@ -209,47 +243,57 @@ export default function Evenements() {
 const EventCard = ({ event }: { event: Event }) => {
     const [isHovered, setIsHovered] = useState(false);
 
+
     return (
-        <Card className="w-96 ">
-            <CardContent className='relative h-96'
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}>
-                <Image
-                    src={event.image.src}
-                    alt={event.image.alt}
-                    layout='fill'
-                    objectFit='cover'
-                    className={`rounded-t-md transition-all duration-300 ${isHovered ? 'brightness-50' : ''}`}
+        <motion.div
+            layoutId={event.title}>
+            <Card className="w-96 ">
+                <CardContent className='relative h-96'
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}>
+                    <Image
+                        src={event.image.src}
+                        alt={event.image.alt}
+                        layout='fill'
+                        objectFit='cover'
+                        className={`rounded-t-md transition-all duration-300 ${isHovered ? 'brightness-50' : ''}`}
 
-                />
-                <div className='flex flex-col justify-center items-center '>
-                    <button
-                        className={`absolute bottom-1/2 bg-red-800 hover:bg-blue-900 text-white text-md tracking-widest font-semibold px-6 py-3 rounded-md transition-all duration-300 transform ${isHovered ? "translate-y-0 opacity-100" : "translate-y-full  opacity-0"}`}
-                    >
-                        Participer
-                    </button>
-                </div>
+                    />
+                    <div className='flex flex-col justify-center items-center '>
+                        <button
+                            className={`absolute bottom-1/2 bg-red-800 hover:bg-blue-900 text-white text-md tracking-widest font-semibold px-6 py-3 rounded-md transition-all duration-300 transform ${isHovered ? "translate-y-0 opacity-100" : "translate-y-full  opacity-0"}`}
 
-            </CardContent>
-            <CardFooter className="flex p-0 items-start ">
-                <div className=' w-24 h-20 bg-blue-900  text-white flex flex-col items-center p-1  rounded-bl-md'>
-                    <span className='font-bold text-2xl'>{event.dateTime.day}</span>
-                    <span className='font-light text-sm'>{event.dateTime.monthString}</span>
-                    <span className='font-bold text-xs'>{event.dateTime.hour}:{event.dateTime.minute < 10 ? `0${event.dateTime.minute}` : ''}</span>
-                </div>
-                <div className='flex pl-2 pt-2 flex-col items-start line-clamp-1  '>
-                    <h1 className='text-md font-semibold'>
-                        {event.title}
-                    </h1>
-                    <span className='text-sm font-light flex items-center gap-2 mt-1'>
-                        <IoPersonOutline /> {event.person}
-                    </span>
-                    <span className='text-sm font-light flex items-center gap-2'>
-                        <IoLocationOutline /> {event.location}
-                    </span>
-                </div>
-            </CardFooter>
-        </Card>
+                        >
+                            Participer
+                        </button>
+                    </div>
+
+                </CardContent>
+                <CardFooter className="flex p-0 items-start ">
+                    <div className=' w-24 h-20 bg-blue-900  text-white flex flex-col items-center p-1  rounded-bl-md'>
+                        <span className='font-bold text-2xl'>{event.dateTime.day}</span>
+                        <span className='font-light text-sm'>{event.dateTime.monthString}</span>
+                        <span className='font-bold text-xs'>{event.dateTime.hour}:{event.dateTime.minute < 10 ? `0${event.dateTime.minute}` : ''}</span>
+                    </div>
+                    <div className='flex pl-2 pt-2 flex-col items-start line-clamp-1  '>
+                        <h1 className='text-md font-semibold'>
+                            {event.title}
+                        </h1>
+                        <span className='text-sm font-light flex items-center gap-2 mt-1'>
+                            <IoPersonOutline /> {event.person}
+                        </span>
+                        <span className='text-sm font-light flex items-center gap-2'>
+                            <IoLocationOutline /> {event.location}
+                        </span>
+                    </div>
+                </CardFooter>
+            </Card>
+
+
+
+
+        </motion.div>
+
     );
 };
 

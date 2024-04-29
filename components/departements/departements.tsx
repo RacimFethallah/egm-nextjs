@@ -93,7 +93,7 @@ export default function Departements() {
             {selectedDepartement && (
                 <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
             )}
-            <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 ">
                 <AnimatePresence>
                     {selectedDepartement && (
                         <motion.div
@@ -101,7 +101,7 @@ export default function Departements() {
                             // initial={{ opacity: 0 }}
                             // animate={{ opacity: 1 }}
                             // exit={{ opacity: 0 }}
-                            className="bg-[#f5f7fa] w-96 h-80 p-6 !rounded-xl shadow-md z-10"
+                            className="bg-[#f5f7fa] w-96 h-80  p-6 !rounded-xl shadow-md "
                         >
                             <motion.button
                                 onClick={() => setSelectedId(null)}
