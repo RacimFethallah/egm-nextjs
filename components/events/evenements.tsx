@@ -202,7 +202,7 @@ export default function Evenements() {
 
                 {sortedEvents.map((event, index) => (
                     <div key={index}
-                        onClick={() => handleEventClick(event)}>
+                        onClick={() => {}}>
                         <EventCard event={event} />
                     </div>
 
