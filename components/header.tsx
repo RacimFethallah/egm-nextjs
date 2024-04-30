@@ -42,9 +42,9 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
 
 
     return (
-        <header className={`flex flex-col bg-white transition-transform ease-in-out duration-500 ${isSticky ? 'sticky top-0 left-0 right-0 z-50 translate-y-[-40%]' : ''}`}>
+        <header className={`flex flex-col bg-white transition-transform ease-in-out duration-500 ${isSticky ? 'sticky top-0 left-0 right-0 z-50 lg:translate-y-[-40%]' : ''}`}>
             <div
-                className={`bg-[#0d2d62] text-white text-sm py-3 sm:flex hidden flex-row justify-around transition-transform duration-500 ${isSticky ? 'translate-y-[-100%]' : ''
+                className={`bg-[#0d2d62] text-white text-sm py-3 hidden lg:flex flex-row justify-around transition-transform duration-500 ${isSticky ? '' : ''
                     }`}
             >
                 <a className='flex items-center gap-2 hover:text-[#556c91] transition-all hover:cursor-pointer'
@@ -69,7 +69,7 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                         alt="Picture of the author"
                         className='hover:cursor-pointer transition-all'
                     />
-                    <div className='flex flex-col items-center lg:items-start'>
+                    <div className='lg:flex flex-col items-center lg:items-start hidden'>
                         <div className='font-bold text-lg font-sans'>Entrepreneur Growth Mindset</div>
                         <div className=' text-slate-500 text-sm italic'>Université d&apos;alger 3</div>
                     </div>
@@ -81,7 +81,6 @@ export default function Header({ sidePanelOpen, setSidePanelOpen }: { sidePanelO
                     <button
                         className='sm:hidden hover:cursor-pointer hover:text-red-800 transition-all'
                         onClick={() => setSidePanelOpen(!sidePanelOpen)}>
-                        {/* {sidePanelOpen ? 'Close Side Panel' : 'Open Side Panel'} */}
                         <CiMenuBurger size={24} strokeWidth={1} className='ml-5 flex' />
                     </button>
                     <div>
