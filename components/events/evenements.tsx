@@ -84,6 +84,54 @@ export default function Evenements() {
 
         },
         {
+            title: "Premiere evenement 1",
+            description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
+            image: { src: uni1.src, alt: "uni1" },
+            person: "John Doe",
+            location: "Université d'Alger 3",
+            dateTime: {
+                day: 30,
+                month: 6,
+                monthString: '',
+                year: 2024,
+                hour: 12,
+                minute: 0,
+            }
+
+        },
+        {
+            title: "Premiere evenement 2",
+            description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
+            image: { src: uni1.src, alt: "uni1" },
+            person: "John Doe",
+            location: "Université d'Alger 3",
+            dateTime: {
+                day: 30,
+                month: 5,
+                monthString: '',
+                year: 2024,
+                hour: 12,
+                minute: 0,
+            }
+
+        },
+        {
+            title: "Premiere evenement 2",
+            description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
+            image: { src: uni1.src, alt: "uni1" },
+            person: "John Doe",
+            location: "Université d'Alger 3",
+            dateTime: {
+                day: 30,
+                month: 5,
+                monthString: '',
+                year: 2024,
+                hour: 12,
+                minute: 0,
+            }
+
+        },
+        {
             title: "Premiere evenement 2",
             description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
             image: { src: uni1.src, alt: "uni1" },
@@ -169,10 +217,10 @@ export default function Evenements() {
 
 
     return (
-        <motion.section 
-        id="Evenements"
-        ref={ref}
-            className="flex flex-col items-center justify-start py-32 ">
+        <motion.section
+            id="Evenements"
+            ref={ref}
+            className="flex flex-col items-center justify-start py-28 ">
             <h1 className="text-5xl font-bold">
                 Évènements
             </h1>
@@ -183,7 +231,7 @@ export default function Evenements() {
                 opts={{
                     startIndex: currentMonth,
                     // slidesToScroll: 5,
-                    // loop: true,
+                    loop: true,
                 }}>
                 <CarouselContent>
                     {monthNames.map((month, index) => (
@@ -195,20 +243,24 @@ export default function Evenements() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className='text-red-800 border-0 hover:text-blue-900' />
-                <CarouselNext className='text-red-800 border-0 hover:text-blue-900' />
+                <CarouselPrevious
+                    disabled={current == currentMonth + 1}
+                    className='text-red-800 border-0 hover:text-blue-900' />
+                <CarouselNext
+                    disabled={current == currentMonth}
+                 className='text-red-800 border-0 hover:text-blue-900' />
             </Carousel>
 
 
 
 
             {/* old way*/}
-            <div className={`grid mt-14 justify-center grid-cols-1 lg:gap-x-36 gap-y-20 ${sortedEvents.length <= 1 ? 'lg:grid-cols-1' : sortedEvents.length == 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}`}>
+            <div className={`grid mt-14 justify-center grid-cols-1 lg:gap-x-20 gap-y-16 ${sortedEvents.length <= 1 ? 'lg:grid-cols-1' : sortedEvents.length == 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}`}>
                 {sortedEvents.length === 0 && <h1 className='text-xl font-semibold text-gray-500'>Aucun évènement ce mois-ci</h1>}
 
                 {sortedEvents.map((event, index) => (
                     <div key={index}
-                        onClick={() => {}}>
+                        onClick={() => { }}>
                         <EventCard event={event} />
                     </div>
 
@@ -251,10 +303,11 @@ const EventCard = ({ event }: { event: Event }) => {
 
 
     return (
-        <motion.div
-            layoutId={event.title}>
-            <Card className="w-96 ">
-                <CardContent className='relative h-96'
+        <div
+        // layoutId={event.title}
+        >
+            <Card className="w-96 border-2 rounded-xl ">
+                <CardContent className='relative h-96 m-2'
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
                     <Image
@@ -262,12 +315,14 @@ const EventCard = ({ event }: { event: Event }) => {
                         alt={event.image.alt}
                         layout='fill'
                         objectFit='cover'
-                        className={`rounded-t-md transition-all duration-300 ${isHovered ? 'brightness-50' : ''}`}
+                        className={`rounded-lg transition-all duration-300  ${isHovered ? 'brightness-50' : ''}`}
 
                     />
+
+
                     <div className='flex flex-col justify-center items-center '>
                         <Link href={'https://forms.gle/vRTSDyN56rKQmHNm6'}
-                        target='_blank'
+                            target='_blank'
                             className={`absolute bottom-1/2 bg-red-800 hover:bg-blue-900 text-white text-md tracking-widest font-semibold px-6 py-3 rounded-md transition-all duration-300 transform ${isHovered ? "translate-y-0 opacity-100" : "translate-y-full  opacity-0"}`}
 
                         >
@@ -299,7 +354,7 @@ const EventCard = ({ event }: { event: Event }) => {
 
 
 
-        </motion.div>
+        </div>
 
     );
 };
