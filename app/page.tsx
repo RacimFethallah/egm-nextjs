@@ -45,7 +45,7 @@ export default function Home() {
           <Departements />
           <Separator className=" mb-8 h-0.5" />
           <Evenements />
-          <Separator className=" mb-8 h-0.5" />
+          <Separator className=" h-0.5" />
           <Formations />
 
 

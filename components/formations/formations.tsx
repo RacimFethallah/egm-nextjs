@@ -174,7 +174,7 @@ export default function Formations() {
     return (
         <motion.section id="Formations"
             ref={ref}
-            className="flex flex-col items-center justify-start py-24  ">
+            className="flex flex-col items-center justify-start py-24  bg-[#f9f9f9] ">
             <h1 className="text-5xl font-bold">
                 Formations
             </h1>
@@ -187,7 +187,7 @@ export default function Formations() {
 
 
 
-            <div className={`grid mt-20  justify-center grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-x-10  gap-y-20 px-16 items-center`}>
+            <div className={`grid mt-20  justify-center grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-x-10  gap-y-20 items-center`}>
                 {formationsChunks[currentPage].map((formation: any, index: number) => (
                     <div key={index} onClick={() => handleFormationClick(formation)}>
                         <FormationCard formation={formation} />

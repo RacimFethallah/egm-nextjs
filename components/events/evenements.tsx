@@ -86,7 +86,7 @@ export default function Evenements() {
         {
             title: "Premiere evenement 1",
             description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
-            image: { src: uni1.src, alt: "uni1" },
+            image: { src: "https://img.freepik.com/photos-gratuite/groupe-personnes-creatives-analysant-resultat-du-travail_329181-15516.jpg?t=st=1714598838~exp=1714602438~hmac=65b2bf7d04252237eb13540f3d1a54893cae1e120acc4f68ea9ed0cc725131d5&w=1060", alt: "uni1" },
             person: "John Doe",
             location: "Université d'Alger 3",
             dateTime: {
@@ -102,7 +102,7 @@ export default function Evenements() {
         {
             title: "Premiere evenement 2",
             description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
-            image: { src: uni1.src, alt: "uni1" },
+            image: { src: "https://livedemo00.template-help.com/wt_59029_v3/images/event-01-540x540.jpg", alt: "uni1" },
             person: "John Doe",
             location: "Université d'Alger 3",
             dateTime: {
@@ -134,7 +134,7 @@ export default function Evenements() {
         {
             title: "Premiere evenement 2",
             description: "Deploy your new project in one-click.sfsdsdsdsdfsdfsdfsdfsdxcvxcvxvsdfsdfsdfsdfewrewrfdfsdfdsfsdewredfsdfsddsfsd",
-            image: { src: uni1.src, alt: "uni1" },
+            image: { src: 'https://img.freepik.com/photos-gratuite/groupe-personnes-dessinant-crayons-toile-assistant-cours-art-professeur-afro-americain-debout-classe-montrant-objet-nature-morte-expliquant-comment-dessiner-formes-proportions_482257-68908.jpg?t=st=1714598777~exp=1714602377~hmac=75a6e6f559c190f511cc996c56771c11b4d469a9ef0f045e9af6999ea440a888&w=1060', alt: "uni1" },
             person: "John Doe",
             location: "Université d'Alger 3",
             dateTime: {
@@ -248,7 +248,7 @@ export default function Evenements() {
                     className='text-red-800 border-0 hover:text-blue-900' />
                 <CarouselNext
                     disabled={current == currentMonth}
-                 className='text-red-800 border-0 hover:text-blue-900' />
+                    className='text-red-800 border-0 hover:text-blue-900' />
             </Carousel>
 
 
@@ -311,6 +311,7 @@ const EventCard = ({ event }: { event: Event }) => {
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
                     <Image
+                        loader={() => event.image.src}
                         src={event.image.src}
                         alt={event.image.alt}
                         layout='fill'
